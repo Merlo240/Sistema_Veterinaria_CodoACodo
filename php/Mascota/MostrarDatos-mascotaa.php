@@ -4,7 +4,7 @@ class MostrarMascota extends Conexion
 {
 
 
-	public function displayData()
+	public function ImprimirDatos()
 	{
 		$query = "SELECT mascota.ID_MASCOTA,mascota.NOMBRE, mascota.SEXO, mascota.F_NACIMIENTO, mascota.OBSERVACION, mascota.TAMAÑO, mascota.CARACTERISTICA, mascota.RAZA, mascota.T_MASCOTA, clientes.NOMBRE_COMPLETO FROM mascota INNER JOIN clientes on mascota.ID_CLIENTE =clientes.ID_CLIENTES ";
 		$result = $this->con->query($query);
@@ -20,7 +20,7 @@ class MostrarMascota extends Conexion
 	}
 
 
-	public function displyaRecordById($id)
+	public function ImprimirDatosId($id)
 	{
 		$query = "SELECT * FROM mascota WHERE ID_MASCOTA= '$id'";
 		$result = $this->con->query($query);

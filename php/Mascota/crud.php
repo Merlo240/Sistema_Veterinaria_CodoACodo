@@ -5,7 +5,7 @@ include_once '../conexion.php';
 class crud_mascota extends Conexion
 {
 	// Insert customer data into customer table
-	public function insertData($post)
+	public function Insertar($post)
 	{
 		$Nombre = $this->con->real_escape_string(strtoupper($_POST['Nombre']));
 		$date = $this->con->real_escape_string($_POST['date']);
@@ -19,14 +19,14 @@ class crud_mascota extends Conexion
 		$query = "INSERT INTO mascota (NOMBRE,SEXO,F_NACIMIENTO ,OBSERVACION,TAMAÑO,CARACTERISTICA,RAZA,T_MASCOTA,ID_CLIENTE ) VALUES('$Nombre','$sexo','$date','$observacion','$tamano','$caracteristicas','$raza','$t_mascota','$dueno')";
 		$sql = $this->con->query($query);
 		if ($sql == true) {
-			header("Location:Mascota.php?msg1=insert");
+			header("Location:Mascota.php?msg1=inserta");
 		} else {
-			echo "Registration failed try again!";
+			header("Location:Mascota.php?msg1=inserta");
 		}
 	}
 
 	// Update customer data into customer table
-	public function updateRecord($postData)
+	public function Actualizar($postData)
 	{
 		$Nombre = $this->con->real_escape_string(strtoupper($_POST['uNombre']));
 		$date = $this->con->real_escape_string($_POST['date']);
@@ -43,22 +43,22 @@ class crud_mascota extends Conexion
 			$query = "UPDATE mascota SET NOMBRE = '$Nombre',SEXO = '$sexo',F_NACIMIENTO = '$date', OBSERVACION = '$observacion', TAMAÑO = '$tamano',CARACTERISTICA = '$caracteristicas',RAZA = '$raza',T_MASCOTA = '$t_mascota', ID_CLIENTE = '$dueno' WHERE ID_MASCOTA = '$id'";
 			$sql = $this->con->query($query);
 			if ($sql == true) {
-				header("Location:Mascota.php?msg2=update");
+				header("Location:Mascota.php?msg2=actualizar");
 			} else {
-				echo "Registration updated failed try again!";
+				header("Location:CLIENTES.php?msg5=actualizar");
 			}
 		}
 	}
 
 	// Delete customer data from customer table
-	public function deleteRecord($id)
+	public function Eliminar($id)
 	{
 		$query = "DELETE FROM mascota WHERE ID_MASCOTA = '$id'";
 		$sql = $this->con->query($query);
 		if ($sql == true) {
-			header("Location:Mascota.php?msg3=delete");
+			header("Location:Mascota.php?msg3=eliminar");
 		} else {
-			echo "Record does not delete try again";
+			header("Location:Mascota.php?msg3=eliminar");
 		}
 	}
 }

@@ -1,4 +1,5 @@
 <?php
+
 //----------------------CLIENTES------------------------
 include 'Cliente/MostrarDatos.php';
 
@@ -11,23 +12,23 @@ $CrudObj = new crud();
 // eliminar
 if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
   $deleteId = $_GET['deleteId'];
-  $CrudObj->deleteRecord($deleteId);
+  $CrudObj->Eliminar($deleteId);
 }
 
 // iNSERTAR
 if (isset($_POST['submit'])) {
-  $CrudObj->insertData($_POST);
+  $CrudObj->Insertar($_POST);
 }
 
 
 if (isset($_GET['editId']) && !empty($_GET['editId'])) {
   $editId = $_GET['editId'];
-  $clientes = $MostrarDatosObj->displyaRecordById($editId);
+  $clientes = $MostrarDatosObj->ImprimirDatosId($editId);
 }
 
 // ACTUALIZAR
 if (isset($_POST['update'])) {
-  $CrudObj->updateRecord($_POST);
+  $CrudObj->Actualizar($_POST);
 }
 
 //---------------------------------------------------------
@@ -40,21 +41,21 @@ $MostrarMascotasObj = new MostrarMascota();
 
 if (isset($_GET['editId-M']) && !empty($_GET['editId-M'])) {
   $editIdM = $_GET['editId-M'];
-  $Mascotas = $MostrarMascotasObj->displyaRecordById($editIdM);
+  $Mascotas = $MostrarMascotasObj->ImprimirDatosId($editIdM);
 }
 
 include 'Mascota/crud.php';
 $Crud_MascotaObj = new crud_mascota();
 
 if (isset($_POST['Insert-mascota'])) {
-  $Crud_MascotaObj->insertData($_POST);
+  $Crud_MascotaObj->Insertar($_POST);
 }
 
 if (isset($_GET['deleteId-M']) && !empty($_GET['deleteId-M'])) {
   $deleteIdM = $_GET['deleteId-M'];
-  $Crud_MascotaObj->deleteRecord($deleteIdM);
+  $Crud_MascotaObj->Eliminar($deleteIdM);
 }
 
 if (isset($_POST['update'])) {
-  $Crud_MascotaObj->updateRecord($_POST);
+  $Crud_MascotaObj->Actualizar($_POST);
 }
